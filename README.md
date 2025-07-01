@@ -1,5 +1,3 @@
----
-
 # Task Management API
 
 A RESTful Task Management API built with **Node.js**, **Express.js**, and **MongoDB**, following the **MVC architecture**. The API includes secure **JWT-based authentication** and supports **file uploads** using Multer.
@@ -53,5 +51,3 @@ task-manager-api/
 2. Run `npm install`
 3. Add your environment variables (e.g., Mongo URI, JWT secret) to `.env`
 4. Start the server with `npm run dev` or `node server.js`
-
----
