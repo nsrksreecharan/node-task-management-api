@@ -7,7 +7,24 @@ const errorHandler=require("./middleware/errorMiddleware");
 const userRoutes=require("./routes/userRoutes");
 const {protect}=require("./middleware/authMiddleware");
 
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://nsrksreecharan.github.io'
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps, curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(errorHandler);
